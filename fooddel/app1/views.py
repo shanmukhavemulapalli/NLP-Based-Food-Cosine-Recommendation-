@@ -4,7 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate , logout , login as loginUser
 from django.contrib import messages
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url="LoginPage")
 def HomePage(request):
     return render(request, 'home.html')
 def Signup(request):
@@ -39,8 +41,7 @@ def login(request):
             loginUser(request,user) 
             return redirect('HomePage') 
          else:
-            messages.info(request,'Username or password is incorrect') 
-            context = {} 
+            return HttpResponse("User info Incorrect")
         
        
       
@@ -48,8 +49,9 @@ def login(request):
    
 def logoutPage(request):
     logout(request)
-    url = reverse("login")
-    return HttpResponse(url)
+    
+    return redirect('LoginPage')
+
 def ksburger(request):
     return render(request,'ksbakers.html')
 

@@ -32,10 +32,9 @@
             <i class="fas fa-search" id="search-icon"></i>
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
+            
             <i class="fa fa-user" aria-hidden="true"></i>
-            <a href="/logout">
-                Logout
-            </a>
+            <a href="{% url 'logout'%}" class="fas fa-arrow-right"></a>
             
         </div>
     </header>
@@ -90,7 +89,7 @@
  <div class="add-container">
  <img src="static/Images/banner/burger banner.jpg">
  <div class="textimg"><h2>30% off on your<br> first order</h2>
- <a href="templates/ksbakers.html"><button class="ordr">Order Now</button></a></div>
+ <a href="{% url 'ksburger' %}"><button class="ordr">Order Now</button></a></div>
  
  </div>
 </div>
