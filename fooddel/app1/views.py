@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate , logout , login as loginUser
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from .models import userInfo
 
 @login_required(login_url="LoginPage")
 def HomePage(request):
@@ -23,6 +24,8 @@ def Signup(request):
         else:
            my_user=User.objects.create_user(uname,email,pass1) 
            my_user.save()
+           new_input=userInfo(usernames=uname,emmails=email,dob=dob)
+           new_input.save()
            return redirect('LoginPage')
         
     
