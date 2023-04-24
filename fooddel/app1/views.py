@@ -6,16 +6,13 @@ from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .models import userInfo
-import pickle
+from d import recommend1
 
-cosine_similarities=pickle.load(open('m.pkl','rb'))
 
 @login_required(login_url="LoginPage")
 def HomePage(request):
-   
-
-    
-    
+    recommend1("Pai Vihar")
+ 
     return render(request, 'home.html')
 def Signup(request):
     
