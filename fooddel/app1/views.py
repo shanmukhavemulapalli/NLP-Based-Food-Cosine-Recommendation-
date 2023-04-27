@@ -11,9 +11,17 @@ from d import recommend1
 
 @login_required(login_url="LoginPage")
 def HomePage(request):
-    recommend1("Pai Vihar")
- 
-    return render(request, 'home.html')
+   if request.method == 'POST':
+       search=request.POST.get('search')
+       result=recommend1(search)
+      
+       
+       context = {'result': result}
+       return render(request, 'home.html' , context)
+       
+       
+       
+   return render(request, 'home.html')
 def Signup(request):
     
     if request.method == 'POST':
@@ -62,4 +70,6 @@ def logoutPage(request):
 def ksburger(request):
     return render(request,'ksbakers.html')
 
+def search(request):
+    return render(request, 'search.html')
 

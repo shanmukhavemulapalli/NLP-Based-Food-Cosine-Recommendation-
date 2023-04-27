@@ -26,5 +26,6 @@ urlpatterns = [
     path('signup',views.Signup,name="Signuppage"),
     path('',views.login,name="LoginPage"),
     path('ksburger',views.ksburger,name="ksburger"),
-    path('logout',views.logoutPage,name="logout")
+    path('logout',views.logoutPage,name="logout"),
+    path('search',views.search,name="search"),
 ] 

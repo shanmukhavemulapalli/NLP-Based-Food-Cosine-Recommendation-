@@ -1,6 +1,9 @@
 import pandas as pd
 import pickle
 cosine_similarities=pickle.load(open('m.pkl','rb'))
+import warnings
+warnings.filterwarnings('always')
+warnings.filterwarnings('ignore')
 
 def recommend1(name):
     
@@ -33,6 +36,6 @@ def recommend1(name):
     l=df_new["name"].values.tolist()
     
     print('TOP %s RESTAURANTS LIKE %s WITH SIMILAR REVIEWS: ' % (str(len(df_new)), name))
-    print(l)
-    
+
+    return (l)   
   
