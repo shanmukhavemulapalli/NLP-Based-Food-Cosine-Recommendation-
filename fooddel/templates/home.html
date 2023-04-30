@@ -23,8 +23,6 @@
             <a href="./dishes.html">dishes</a>
             <a href="#" onclick="openAbout()">about</a>
             <a href="./contact.html" >Contact us</a>
-          
-           
             <a class="feed" id="feedback">feedback</a>
             <a href="#">Orders</a>
         </nav>
@@ -34,7 +32,7 @@
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
             
-            <i class="fa fa-user" aria-hidden="true"></i>
+            <a href="{% url 'profile'%}" class="fa fa-user" aria-hidden="true"></a>
             <a href="{% url 'logout'%}" class="fas fa-arrow-right"></a>
             
         </div>
@@ -79,7 +77,9 @@
     <form action="" id="search-form" method="post">
         {% csrf_token %}
         <input type="text" placeholder="search here..." name="search" id="search-box">
-        <label for="search-box" class="fas fa-search"></label>
+        <button type="submit">
+            <label for="search-box" class="fas fa-search"></label>
+        </button>
         
         <i class="fas fa-times" id="close1"></i>
     </form>
@@ -127,10 +127,6 @@
   <img src="static/Images/banner/grocery-delivery.png" alt="Norway" style="width:100%;">
   <div class="text-block">
     <h2>Chotu!</h2><br/>
-    Recommended restaurants:
-    {% for i in  result %}
-        {{i}}<br/>
-    {% endfor %}
     <h4>Anything you need, delivered</h4>
     <p>Get your grocery, meat, vegetables at your door step<br>
     Stay Home and Enjoy our services.</p>

@@ -28,4 +28,5 @@ urlpatterns = [
     path('ksburger',views.ksburger,name="ksburger"),
     path('logout',views.logoutPage,name="logout"),
     path('search',views.search,name="search"),
+    path('profile',views.profile,name="profile"),
 ] 

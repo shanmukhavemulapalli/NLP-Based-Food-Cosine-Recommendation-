@@ -5,8 +5,9 @@ from django.contrib.auth import authenticate , logout , login as loginUser
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .models import userInfo
+from .models import *
 from d import recommend1
+import pymongo
 
 
 @login_required(login_url="LoginPage")
@@ -17,7 +18,7 @@ def HomePage(request):
       
        
        context = {'result': result}
-       return render(request, 'home.html' , context)
+       return render(request, 'search.html' , context)
        
        
        
@@ -68,8 +69,22 @@ def logoutPage(request):
     return redirect('LoginPage')
 
 def ksburger(request):
+    
+    
+    
     return render(request,'ksbakers.html')
 
 def search(request):
     return render(request, 'search.html')
+
+def profile(request):
+    cuser = request.user
+  
+    info_list=User.objects.all()
+    i=cuser.id
+    em=cuser.email
+    name=cuser.username
+    
+    context={'name':name,'email':em,'id':i}
+    return render(request, 'profile.html',context)
 
