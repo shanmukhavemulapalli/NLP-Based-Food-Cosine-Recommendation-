@@ -1,12 +1,11 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Order</title>
     <link rel="icon" href="./static/Images/Restaurants/download.png" type="image/icon type">
-<link rel="stylesheet"  type="text/css" href="./static/css/profile.css">
+<link rel="stylesheet"  type="text/css" href="./static/css/order.css">
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <title>Search Results</title>
 </head>
@@ -20,10 +19,12 @@
             <a href="./dishes.html">dishes</a>
             <a href="#" onclick="openAbout()">about</a>
             <a href="./contact.html" >Contact us</a>
-          
-           
+
+            
+
+
             <a class="feed" id="feedback">feedback</a>
-            <a href="#">Orders</a>
+            <a href=""{% url 'order' %}"">Order</a>
         </nav>
         <div class="icons">
             <i class="fas fa-bars" id="menu-bars"></i>
@@ -45,25 +46,62 @@
         <i class="fas fa-times" id="close1"></i>
     </form>
     <div class="container-grocery">
-  <img src="static/Images/banner/grocery-delivery.png" alt="Norway" style="width:100%;">
-  <div class="text-block" style="margin-top:100px;">
-    <h2>Profile</h2>
-    <table style="text-align:left;">
-        <tr>
-            <th><h4>User ID:</h4></th>
-            <td><h4>{{id}}</h4></td>
-        </tr>
-        <tr>
-            <th><h4>User Name:</h4></th>
-            <td><h4>{{name}}</h4></td>
-        </tr>
-        <tr>
-            <th><h4>Registered Email Id : </h4></th>
-            <td><h4>{{email}}</h4></td>
-        </tr>
-    </table>
-</div>
 
+  <form action="order" method="post" style="position:relative;">
+
+    {% csrf_token %}
+    <label for="hotel_name">Hotel Name:</label>
+    <select id="hotel_name" name="hotel_name">
+        <option value="Addhuri Udupi Bhojana">Addhuri Udupi Bhojana</option>
+        <option value="Penthouse Cafe">Penthouse Cafe</option>
+        <option value="360 Atoms Restaurant And Cafe">360 Atoms Restaurant And Cafe</option>
+        <option value="Redberrys">Redberrys</option>
+        <option value="Ovenstory Pizza">Ovenstory Pizza</option>
+        <option value="Maruthi Davangere Benne Dosa">Maruthi Davangere Benne Dosa</option>
+    </select><br><br>
+    
+    <label>Dining Preference:</label><br>
+    <label for="dine_in">Dine In</label>
+    <input type="radio" id="dine_in" name="dining_preference" value="dine_in"><br>
+    <label for="take_out">Order</label>
+    <input type="radio" id="take_out" name="dining_preference" value="take_out"><br><br>
+
+    <div>
+        <label for="cuisine">Cuisine:</label>
+        <table class="cuisine-options">
+          <tr>
+            <td><input type="checkbox" name="cuisine[]" value="italian" id="italian"></td>
+            <td><label for="italian">Italian</label></td>
+            <td><input type="checkbox" name="cuisine[]" value="mexican" id="mexican"></td>
+            <td><label for="mexican">Mexican</label></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="cuisine[]" value="chinese" id="chinese"></td>
+            <td><label for="chinese">Chinese</label></td>
+            <td><input type="checkbox" name="cuisine[]" value="indian" id="indian"></td>
+            <td><label for="indian">Indian</label></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="cuisine[]" value="japanese" id="japanese"></td>
+            <td><label for="japanese">Japanese</label></td>
+            <td><input type="checkbox" name="cuisine[]" value="american" id="american"></td>
+            <td><label for="american">American</label></td>
+          </tr>
+        </table>
+      </div>
+      
+     
+    
+    <label for="address">Address:</label><br>
+    <textarea id="address" name="address"></textarea><br><br>
+    
+    <input type="submit" value="Submit">
+
+</form>
+  <div class="text-block" style="margin-top:100px;">
+   
+    </div>
+  
 </div>
  
     <script>

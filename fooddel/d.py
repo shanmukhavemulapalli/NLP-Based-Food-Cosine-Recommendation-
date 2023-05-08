@@ -34,6 +34,7 @@ def recommend1(name):
     df_new = df_new.drop_duplicates(subset=['cuisines','Mean Rating', 'cost','name'], keep=False)
     df_new = df_new.sort_values(by='Mean Rating', ascending=False).head(10)
     l=df_new["name"].values.tolist()
+   
     
     print('TOP %s RESTAURANTS LIKE %s WITH SIMILAR REVIEWS: ' % (str(len(df_new)), name))
 

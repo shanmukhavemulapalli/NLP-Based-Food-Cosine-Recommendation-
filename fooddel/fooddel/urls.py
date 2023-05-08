@@ -29,4 +29,5 @@ urlpatterns = [
     path('logout',views.logoutPage,name="logout"),
     path('search',views.search,name="search"),
     path('profile',views.profile,name="profile"),
+    path('order',views.order,name="order"),
 ] 

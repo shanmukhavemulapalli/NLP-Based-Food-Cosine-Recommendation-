@@ -15,7 +15,7 @@ def HomePage(request):
    if request.method == 'POST':
        search=request.POST.get('search')
        result=recommend1(search)
-      
+       
        
        context = {'result': result}
        return render(request, 'search.html' , context)
@@ -39,6 +39,7 @@ def Signup(request):
            my_user.save()
            new_input=userInfo(usernames=uname,emmails=email,dob=dob)
            new_input.save()
+           
            return redirect('LoginPage')
         
     
@@ -87,4 +88,20 @@ def profile(request):
     
     context={'name':name,'email':em,'id':i}
     return render(request, 'profile.html',context)
+
+
+def order(request):
+    if request.method =='POST':
+        Hname=request.POST.get('hotel_name')
+        DineIn_or_not=request.POST.get("dining_preference")
+        Cuisine = request.POST.get('cuisine[]')
+        Address=request.POST.get('address')
+        order = Order(name=Hname , type = DineIn_or_not , cusine=Cuisine,address=Address)
+        order.save()
+    
+    
+    return render(request, 'order.html')
+
+
+
 

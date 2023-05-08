@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>We Recommended</title>
+    <title>We Recommend</title>
     <link rel="icon" href="./static/Images/Restaurants/download.png" type="image/icon type">
-<link rel="stylesheet"  type="text/css" href="./static/css/home.css">
+<link rel="stylesheet"  type="text/css" href="./static/css/search.css">
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <title>Search Results</title>
 </head>
@@ -23,7 +23,7 @@
           
            
             <a class="feed" id="feedback">feedback</a>
-            <a href="#">Orders</a>
+            <a href=""{% url 'order' %}"">Order</a>
         </nav>
         <div class="icons">
             <i class="fas fa-bars" id="menu-bars"></i>
@@ -39,20 +39,25 @@
     <form action="" id="search-form" method="post">
         {% csrf_token %}
         <input type="text" placeholder="search here..." name="search" id="search-box">
-        <label for="search-box" class="fas fa-search"></label>
+        <button type="submit">
+            <label for="search-box" class="fas fa-search"></label>
+        </button>
         
         <i class="fas fa-times" id="close1"></i>
     </form>
     <div class="container-grocery">
   <img src="static/Images/banner/grocery-delivery.png" alt="Norway" style="width:100%;">
   <div class="text-block" style="margin-top:100px;">
-    <h2> Recommended restaurants:</h2><br/>
-    {% for i in  result %}
-       
-       <h3> {{i}}<br/></h3>
-       
-    {% endfor %}
-    </div>
+    <h2>Recommended restaurants:</h2>
+    <table>
+        {% for i in result %}
+            <tr>
+                <td><h5>{{ i }}</h5></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
   
 </div>
     

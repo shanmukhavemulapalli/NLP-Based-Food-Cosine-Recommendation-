@@ -6,3 +6,7 @@ from .models import *
 class userInfo(admin.ModelAdmin):
     pass
 
+
+@admin.register(Order)
+class Order(admin.ModelAdmin):
+    pass
